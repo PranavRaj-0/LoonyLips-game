@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=3 uid="uid://bu70sxg405u1f"]
+
+[ext_resource type="Script" path="res://LoonyLips.gd" id="1_gxmmc"]
+[ext_resource type="Texture2D" uid="uid://bx2g0twc0rdcm" path="res://gfx/blackboard.jpg" id="2_otqi8"]
+[ext_resource type="FontFile" uid="uid://yjucx63w6ffs" path="res://gfx/Feltpen.ttf" id="3_5qldq"]
+[ext_resource type="Texture2D" uid="uid://dvwkpjk0jswol" path="res://gfx/blue_button11.png" id="4_a3iyr"]
+[ext_resource type="Texture2D" uid="uid://dum6tk6bp4aip" path="res://gfx/blue_button12.png" id="5_wopjr"]
+[ext_resource type="Script" path="res://Story.gd" id="6_ilelx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_md2tp"]
+bg_color = Color(0.239216, 0.239216, 0.239216, 1)
+
+[node name="LoonyLips" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gxmmc")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_otqi8")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="DisplayText" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 480)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_5qldq")
+theme_override_font_sizes/font_size = 32
+text = "PLACEHOLDER TEXT"
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="PlayerText" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_5qldq")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_md2tp")
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(59, 59)
+layout_mode = 2
+texture_normal = ExtResource("4_a3iyr")
+texture_pressed = ExtResource("5_wopjr")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_5qldq")
+theme_override_font_sizes/font_size = 28
+text = "OK"
+
+[node name="StoryBook" type="Node" parent="."]
+
+[node name="Story0" type="Node" parent="StoryBook"]
+script = ExtResource("6_ilelx")
+prompts = PackedStringArray("an year", "a noun", "a number", "a name")
+story = "In the year %s, as the %s tightened its grip, Earth's population dwindled to %s. Amidst despair, a beacon emerged – %s, a hero who rallied survivors into the Resistance. Against all odds, the hero inspired a courageous stand, igniting a spark of hope for freedom."
+
+[node name="Story1" type="Node" parent="StoryBook"]
+script = ExtResource("6_ilelx")
+prompts = PackedStringArray("a name", "a small number", "a noun", "another noun")
+story = "After centuries of remarkable human progress, intergalactic travel became a reality. Captain %s led a small crew of %s through the %s galaxy. Amidst the cosmic tapestry, their sensors glimmered with promise upon spotting a distant planet – %s. Touching down, they beheld a world of wonders: dense forests, iridescent flora, and creatures adorned in hues unseen."
+
+[node name="Story2" type="Node" parent="StoryBook"]
+script = ExtResource("6_ilelx")
+prompts = PackedStringArray("an andjective", "another adjective", "a noun", "a name")
+story = "Amidst %s Oakwood Grove, Ava sought solace. %s zephyrs carried tales of forgotten realms, as if the %s whispered secrets. As daylight waned, a bond deepened between Ava and the forest, a connection that transcended words, rooted in the shared wisdom of %s."
+
+[node name="Story3" type="Node" parent="StoryBook"]
+script = ExtResource("6_ilelx")
+prompts = PackedStringArray("a noun", "an adjective", "a noun", "a number")
+story = "This is the story of  %s. It was on it's %s way to find a %s. Finally, after %s days it succesfully found it."
+
+[connection signal="text_submitted" from="VBoxContainer/HBoxContainer/PlayerText" to="." method="_on_player_text_text_submitted"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/TextureButton" to="." method="_on_texture_button_pressed"]

@@ -1,0 +1,17 @@
+[
+	{"prompts" : ["an year", "a noun", "a number ", "a name"],
+	"story" : "In the year %s, as the %s tightened its grip, Earth's population dwindled to %s. Amidst despair, a beacon emerged – %s, a hero who rallied survivors into the Resistance. Against all odds, the hero inspired a courageous stand, igniting a spark of hope for freedom."
+	},
+	{
+	"prompts" : ["a name", "a small number", "a noun", "another noun"],
+	"story" : "After centuries of remarkable human progress, intergalactic travel became a reality. Captain %s led a small crew of %s through the %s galaxy. Amidst the cosmic tapestry, their sensors glimmered with promise upon spotting a distant planet – %s. Touching down, they beheld a world of wonders: dense forests, iridescent flora, and creatures adorned in hues unseen. "
+	},
+	{
+	"story" : "Amidst %s Oakwood Grove, Ava sought solace. %s zephyrs carried tales of forgotten realms, as if the %s whispered secrets. As daylight waned, a bond deepened between Ava and the forest, a connection that transcended words, rooted in the shared wisdom of %s.",
+	"prompts" : ["an adjective", "another adjective", "a noun", "a name"]
+	},
+	{
+	"story" : "This is the story of %s. It was on it's %s way to find a %s. Finally, after %s days it succesfully found it.",
+	"prompts" : ["a noun", "an adjective" , "a noun", "A number"]
+	}
+]
